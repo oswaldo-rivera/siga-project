@@ -1,0 +1,30 @@
+  <div class="row vertical-center text-center justify-content-center">
+    <div class="col-10 col-sm-6 col-md-4 my-auto">
+      <h4>Confirmación de cuenta</h4>
+      <p class="text-center my-4">
+        Hemos enviado un código de confirmación <b>al correo que registraste</b>.
+        <br>
+        Escribí acá el código que recibiste.
+      </p>
+      <p class="text-center my-4 small text-body-secondary">
+        Si no encontrás el correo, revisa en "<b>Spam</b>" o "<b>Correo no deseado</b>". 
+        El E-mail podría haber sido mal catalogado por tu servicio de correo.
+      </p>
+      <?php //if((isset($this->cod_vencido))&&($this->cod_vencido==true)) { ?>
+        <!-- <p class="text-center my-4">
+          <button type="button" class="btn btn-secondary" id="btn-upcode"> Reenviar código de verificación </button>
+        </p> -->
+      <?php //} ?>
+    <form id="f_confirmar" method="post">
+      <div class="row justify-content-center g-2">
+        <input class="form-control form-control-lg text-center" type="text" name="user_code" id="user_code" value="" minlength="6" maxlength="6" autofocus>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 mt-4">
+          <input type="hidden" name="codenviado" value="1">
+          <button type="submit" class="btn btn-primary btn-lg disabled" id="btn-confirmar">Confirmar</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>

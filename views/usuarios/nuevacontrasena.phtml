@@ -1,0 +1,51 @@
+<div class="row vertical-center text-center justify-content-center">
+  <div class="col-12 col-sm-8 col-md-6 col-lg-4 my-auto">
+    <form id="f_contrasena"  method="post">
+      <h5 class="text-center mt-3">Restablecer mi contraseña</h5>
+      <!-- Password -->
+      <div class="row mt-4">
+        <div class="col-4 mt-2 text-end">
+          <label for="pass" class="form-label">Contraseña</label>
+        </div>
+        <div class="col-8">
+          <div class="input-group">
+            <input type="password" class="form-control" name="us_pass" id="us_pass" value="<?php if(isset($this->datos)) echo $this->datos['us_pass']; ?>" title="Más de 8 caracteres" aria-describedby="view-pass" required autocomplete="new-password">
+            <span class="input-group-text" id="view-pass"><i class="bi-eye"></i></span>
+          </div>
+        </div>
+        <div class="col-8 offset-4"><span id="us_pass_alert"></span></div>
+      </div>
+      <div class="row align-items-center mt-2">
+        <div class="col-md-12 text-center">
+          <div class="row mx-0 text-secondary justify-content-center">
+            <div class="col-auto pe-1 g-0 small">Incluir...</div>
+            <div class="col-auto pe-1 g-0 small" id="tp1">| +8 car. </div>
+            <div class="col-auto pe-1 g-0 small" id="tp2">| a-z/A-Z </div>
+            <div class="col-auto pe-1 g-0 small" id="tp3">| núm.0-9 </div>
+            <div class="col-auto pe-1 g-0 small" id="tp4">| @.,_#$ |</div>
+          </div>
+        </div>
+      </div>
+      <!-- Confirmar Password -->
+      <div class="row my-4">
+        <div class="col-4 mt-2 text-end">
+          <label for="pass" class="form-label">Confirmar</label>
+        </div>
+        <div class="col-8">
+          <div class="input-group">
+            <input type="password" class="form-control" name="us_confirm" id="us_confirm" value="<?php if(isset($this->datos)) echo $this->datos['us_confirm']; ?>" title="Más de 8 caracteres" aria-describedby="view-confirm" required autocomplete="new-password">
+            <span class="input-group-text" id="view-confirm"><i class="bi-eye"></i></span>
+          </div>
+        </div>
+        <div class="col-8 offset-4"><span id="us_confirm_alert"></span></div>
+      </div>
+      <div class="row align-items-center my-4">
+        <div class="col-12 text-center">
+          <input type="hidden" name="us_dni" id="us_dni" value="<?= $this->dni ?>">
+          <input type="hidden" name="enviarcontrasena" value="1">
+          <button class="btn btn-primary" type="submit" id="btn_submit">Actualizar contraseña</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

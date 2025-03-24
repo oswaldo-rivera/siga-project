@@ -1,0 +1,17 @@
+    <p>Inicio de Sesión</p>
+    <form name="f_login" method="post">
+      <div class="form-floating mb-2">
+        <input type="text" name="us_user" id="us_user" class="form-control text-center" placeholder="email o DNI" value="<?php if(isset($this->datos)) echo $this->datos['us_user'] ?>" required>
+        <label for="us_email">Email o DNI</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="password" name="us_pass" id="us_pass" class="form-control text-center" placeholder="password" value="<?php if(isset($this->datos)) echo $this->datos['us_pass'] ?>" required>
+        <label for="us_pass">Password</label>
+      </div>
+      <input type="hidden" name="enviar" value="1">
+      <button class="btn btn-primary mt-2 px-4" type="submit">Ingresar</button>
+      <br><br>
+      <a class="link-success" href="<?php echo BASE_URL; ?>usuarios/crearcuenta">Crear Cuenta</a>
+      <br><br>
+      <a class="link-secondary mt-4" href="<?php echo BASE_URL; ?>usuarios/enviarcodigo">Olvidé mi Contraseña</a>
+    </form>

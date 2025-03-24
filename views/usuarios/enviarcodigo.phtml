@@ -1,0 +1,21 @@
+<div class="row vertical-center text-center justify-content-center">
+  <div class="col-10 col-sm-6 col-md-4 my-auto">
+    <h5 class="mb-3">Restablecer contraseña</h5>
+    <p>Te enviaremos un código al E-mail
+      <br>
+      con el que abriste tu cuenta.
+    </p>
+    <form name="f_login" method="post">
+      <div>
+        <input type="text" name="us_email" id="us_email" class="form-control text-center my-2" value="<?php if(isset($this->email)) echo $this->email; ?>" placeholder="Escribí acá tu E-mail" required autofocus >
+      </div>
+      <p class="small mb-4">
+        Si tampoco recuerdas el E-mail,
+        <br> 
+        <a class="link-danger" href="<?php echo BASE_URL; ?>index/contacto">envía un mensaje</a> al administrador.
+      </p>
+      <input type="hidden" name="enviaralemail" value="1">
+      <button class="btn btn-primary mt-2 px-4" type="submit">Enviar código a mi E-mail</button>
+    </form>
+  </div>
+</div>

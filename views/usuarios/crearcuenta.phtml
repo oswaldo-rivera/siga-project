@@ -1,0 +1,113 @@
+<div class="container singup-zone" id="zona-crearusuario">
+  <div class="row justify-content-md-center">
+    <form class="col-md-6" id="f_usuario"  method="post">
+      <h5 class="text-center mt-3">Crear nueva cuenta</h5>
+      <p class="text-center">Si ya tenés una cuenta creada, <a  class="text-center" href="<?php echo BASE_URL; ?>login">Ingresa acá</a>.</p>
+        <!-- acceso -->
+        <!-- Documento de identidad -->
+        <div class="row align-items-center my-2">
+          <div class="col-md-2 my-2">
+              <label for="us_dni">DNI</label>
+          </div>
+          <div class="col-8 col-md-5">
+              <input type="number" class="form-control" min="5000000" name="us_dni" id="us_dni" value="<?php if(isset($this->datos)) echo $this->datos['us_dni']; ?>" required autofocus>
+          </div>
+          
+        </div>
+        <!-- Email -->
+      <div class="row align-items-center">
+        <div class="col-md-2 my-2">
+          <label for="email" class="form-label">E-mail</label>
+        </div>
+        <div class="col-md-10">
+          <input type="email" class="form-control" name="us_email" id="us_email" value="<?php if(isset($this->datos)) echo $this->datos['us_email']; ?>" required>
+        </div>
+      </div>
+      <hr>
+      <!-- Password -->
+      <div class="row align-items-center">
+        <div class="col-md-2 mt-2">
+          <label for="pass" class="form-label">Contraseña</label>
+        </div>
+        <div class="col-9 col-md-6">
+          <div class="input-group">
+            <input type="password" class="form-control" name="us_pass" id="us_pass" value="<?php if(isset($this->datos)) echo $this->datos['us_pass']; ?>" title="Más de 8 caracteres" aria-describedby="view-pass" required autocomplete="new-password">
+            <span class="input-group-text" id="view-pass"><i class="bi-eye"></i></span>
+          </div>
+        </div>
+        <div class="col-3 col-md-4 pt-md-auto"><span id="us_pass_alert"></span></div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-10 mt-1">
+          <div class="row mx-0 text-secondary justify-content-center">
+            <div class="col-auto pe-1 g-0 small">Incluir...</div>
+            <div class="col-auto pe-1 g-0 small" id="tp1">| +8 car. </div>
+            <div class="col-auto pe-1 g-0 small" id="tp2">| a-z/A-Z </div>
+            <div class="col-auto pe-1 g-0 small" id="tp3">| núm.0-9 </div>
+            <div class="col-auto pe-1 g-0 small" id="tp4">| @.,_#$ |</div>
+          </div>
+        </div>
+        <div class="col-md-4"><span id="us_pass_alert"></span></div>
+      </div>
+      <!-- Confirmar Password -->
+      <div class="row align-items-center my-2">
+        <div class="col-md-2">
+          <label for="pass" class="form-label">Confirmar</label>
+        </div>
+        <div class="col-9 col-md-6">
+          <div class="input-group">
+            <input type="password" class="form-control" name="us_confirm" id="us_confirm" value="<?php if(isset($this->datos)) echo $this->datos['us_confirm']; ?>" title="Más de 8 caracteres" aria-describedby="view-confirm" required autocomplete="new-password">
+            <span class="input-group-text" id="view-confirm"><i class="bi-eye"></i></span>
+          </div>
+        </div>
+        <div class="col-3 col-md-4"><span id="us_confirm_alert"></span></div>
+      </div>
+      <!-- datos adicionales -->
+      <hr>
+      <!-- Nombre -->
+      <div class="row align-items-center my-2">
+        <div class="col-md-2">
+            <label for="us_nombre">Nombre</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="us_nombre" id="us_nombre" value="<?php if(isset($this->datos)) echo $this->datos['us_nombre']; ?>" required>
+        </div>
+      </div>
+      <!-- Apellido -->
+      <div class="row align-items-center my-2">
+        <div class="col-md-2 my-2">
+            <label for="us_apellido">Apellido</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="us_apellido" id="us_apellido" value="<?php if(isset($this->datos)) echo $this->datos['us_apellido']; ?>" required>
+        </div>
+      </div>
+      <!-- Rol -->
+      <div class="row align-items-center mt-2">
+        <div class="col-md-2 my-2">
+            <label for="us_rol">Rol</label>
+        </div>
+        <div class="col-8 col-md-5">
+          <select class="form-select" id="us_rol" name="us_rol" title="Determinan las funciones que tendrá disponibles" required>
+            <option value="" <?php if(!(isset($this->datos))) echo 'selected'; ?> disabled>Seleccione...</option>
+            <option value="2" <?php if((isset($this->datos))&&($this->datos==2)) echo 'selected'; ?>>Director</option>
+            <option value="3" <?php if((isset($this->datos))&&($this->datos==3)) echo 'selected'; ?>>Docente</option>
+            <option value="4" <?php if((isset($this->datos))&&($this->datos==4)) echo 'selected'; ?>>Preceptor</option>
+          </select>
+        </div>
+      </div>
+      <!-- Botones "Enviar" / "Cancelar" -->
+      <div class="row align-items-center my-4">
+        <div class="col-md-2">
+          &nbsp;
+        </div>
+        <div class="col-md-10 text-center">
+          <input type="hidden" name="enviardata" value="1">
+          <button class="btn btn-primary" type="submit" id="btn_submit">Crear Cuenta</button>
+          <a href="<?php echo BASE_URL; ?>login" class="btn btn-secondary ms-3" role="button" aria-pressed="true"> Cancelar </a>&nbsp;&nbsp;&nbsp;
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
