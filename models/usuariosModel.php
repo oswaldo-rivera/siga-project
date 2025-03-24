@@ -32,7 +32,6 @@ class usuariosModel extends Model {
 
 	public function getUsuarioByDni($dni) {
 			$sql = "SELECT * FROM rc_usuarios WHERE usu_dni = $dni";
-      // $usuario = $this->_db->prepare($sql)->execute();
 			$usuario = $this->_db->query($sql);
 			$usuario->setFetchMode(PDO::FETCH_ASSOC);
 			return $usuario->fetch();
@@ -40,7 +39,6 @@ class usuariosModel extends Model {
 
 	public function getUsuarioByEmail($email) {
 			$sql = "SELECT * FROM rc_usuarios WHERE usu_email = '$email'";
-      // $usuario = $this->_db->prepare($sql)->execute();
 			$usuario = $this->_db->query($sql);
 			$usuario->setFetchMode(PDO::FETCH_ASSOC);
 			return $usuario->fetch();
@@ -61,37 +59,6 @@ class usuariosModel extends Model {
 			$existe = $usuario->fetch();
       return $existe['found'];
 	}
-
-    public function saveUsuario_resp($dni, $email, $pass, $nombre, $apellido, $role) {
-    $sqlInsert = "REPLACE INTO rc_usuarios 
-                  (usu_dni, 
-                  usu_email, 
-                  usu_pass,
-                  usu_nombre,
-                  usu_apellido,
-                  usu_role,
-                  usu_status) 
-									VALUES
-                  (:dni, 
-                  :email, 
-                  :pass,
-                  :nombre,
-                  :apellido,
-                  :role,
-                  1)";
-    $result = $this->_db->prepare($sqlInsert)
-    ->execute(
-      array(
-        ':dni'  => $dni,
-        ':email' => $email,
-        ':pass' => Hash::getHash('md5',$pass, HASH_KEY),
-        ':nombre' => $nombre,
-        ':apellido' => $apellido,
-        ':role' => $role
-      )
-    );
-    return $result;
-  }
 
   public function saveUsuario($dni, $email, $pass, $nombre, $apellido, $role) {
     $sqlInsert = "REPLACE INTO rc_usuarios 
@@ -125,8 +92,6 @@ class usuariosModel extends Model {
     // Registro de códigos de activacion temporal via email (24 hs)
     $permitted_chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 		$code = substr(str_shuffle($permitted_chars), 0, 6);
-    // $tomorrow = date('d') + 1;
-    // $vence = date("Y-m-$tomorrow h:i:s");
 		$vence=  date ('Y-m-d H:i:s', strtotime('+24 hours', strtotime(date('Y-m-d H:i:s'))));
     
 		$sql1 = "REPLACE INTO rc_codigos (cod_codigo, usu_dni, cod_vence) VALUES ('$code', $dni, '$vence')";
@@ -139,8 +104,6 @@ class usuariosModel extends Model {
   public function updateCodigo($dni){
     $permitted_chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
 		$code = substr(str_shuffle($permitted_chars), 0, 6);
-    // $tomorrow = date('d') + 1;
-    // $vence = date("Y-m-$tomorrow h:i:s");
     $vence=  date ('Y-m-d H:i:s', strtotime('+24 hours', strtotime(date('Y-m-d H:i:s'))));
     $sql1 = "REPLACE INTO rc_codigos (cod_codigo,usu_dni,cod_vence) VALUES ('$code',$dni, '$vence')";
 		$this->_db->prepare($sql1)->execute();

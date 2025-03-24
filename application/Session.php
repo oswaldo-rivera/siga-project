@@ -1,11 +1,11 @@
 <?php
 class Session {
-    // Iniciar una nueva sesion o reanudar la existente
+  // Iniciar una nueva sesion o reanudar la existente
 	public static function init(){
 		session_start();
 	}
 
-    // destruye la sesion
+  // destruye la sesion
 	public static function destroy($clave = false) {
 		if($clave){
 			if(is_array($clave)){
@@ -24,13 +24,13 @@ class Session {
 		}
 	}
 
-    // crea una variable de sesion y le asigna un valor
+  // crea una variable de sesion y le asigna un valor
 	public static function set($clave, $valor){
 		if(!empty($clave))
 		$_SESSION[$clave] = $valor;
 	}
 
-    // obtienen el valor de una variable de sesion
+  // obtienen el valor de una variable de sesion
 	public static function get($clave){
 		if(isset($_SESSION[$clave]))
 		return $_SESSION[$clave];
@@ -38,23 +38,23 @@ class Session {
 
 	public static function acceso($level){
 		// si existe la variable de sesion "autenticado" ...
-        if(!Session::get('autenticado')){
+    if(!Session::get('autenticado')){
 			header('Location:' . BASE_URL . 'error/access/5050');
 			exit;
 		}
 
-        // inicia el contador de tiempo de session
+    // inicia el contador de tiempo de session
 		Session::tiempo();
 
-        // verifica que el nivel de acceso requerido
-        // sea el adecuado para dar acceso
+    // verifica que el nivel de acceso requerido
+    // sea el adecuado para dar acceso
 		if(Session::getLevel($level) > Session::getLevel(Session::get('level'))) {
 			header('Location:' . BASE_URL . 'error/access/5050');
 			exit;
 		}
 	}
 
-    // Valida nivel de acceso para la vista
+  // Valida nivel de acceso para la vista
 	public static function accesoView($level){
 		if(!Session::get('autenticado')){
 			return false;
@@ -66,9 +66,8 @@ class Session {
 		return true;
 	}
 
-    // 
+  
 	public static function getLevel($level){
-
 		// listado de roles
 		$role['estudiante'] = 1;
         $role['docente'] = 2;
@@ -149,7 +148,7 @@ class Session {
 			exit;
 		}
 			
-        Session::tiempo();
+    Session::tiempo();
 	}
 }
 

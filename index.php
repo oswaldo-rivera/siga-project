@@ -10,6 +10,7 @@
     define('APP_PATH', ROOT . 'application' . DS);
 
 // inicio de carga de archivos base de la aplicacion
+// se ejectan en el orden necesario
     try 
     {
 	    require_once APP_PATH . 'Config.php';

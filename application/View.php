@@ -24,10 +24,12 @@ class View {
 
 	}
 
-    /* esta funcion construye la vista a partir de 
-       partes estaticas que se encuentran en /views/layout/
-       mas la parte central que esta definida por el 
-       nombre del controlador */
+  /********************************************************
+   * esta funcion construye la vista a partir de          *
+   * partes estaticas que se encuentran en /views/layout/ *
+   * mas la parte central que esta definida por el        *
+   * nombre del controlador                               *
+   ********************************************************/
 	public function renderizar($vista) {
 
 		$js = array();
@@ -55,9 +57,11 @@ class View {
 		include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'footer.php';
 	}
 
-    /* render de paginas externas al sistema, publicas
-       que no requieren estar logueado para verlas
-       pero tampoco muestran el menu de la aplicacion */
+  /***************************************************
+   * render de paginas externas al sistema, publicas *
+   * que no requieren estar logueado para verlas     *
+   * pero tampoco muestran el menu de la aplicacion  *
+   ***************************************************/
 	public function renderExterno($vista) {
 
 		$js = array();
@@ -97,7 +101,7 @@ class View {
 		}
 	}
 
-    // cargar archivos js exclusivos de una vista
+  // cargar archivos js exclusivos de una vista
 	public function setJs(array $js){
 		if(is_array($js) && count($js)) {
 			for($i = 0; $i < count($js); $i++) {
@@ -108,19 +112,19 @@ class View {
 		}
 	}
 	
-    // configurar alertas
-    public function setAlert($msg ,$type = 'primary', $action = null){
+  // configurar alertas
+  public function setAlert($msg ,$type = 'primary', $action = null){
+		/**************************************************************************************
+		 * Tipos primary, secondary, info, success, warning, danger (no requieren action)     *
+		 * Tipo confirm (requiere action).                                                    *
+		 * el argumento action es una funcion de js que se ejecuta cuando el usuario confirma *
+		 **************************************************************************************/
 		if($msg!='') {
 			Session::set('alerta_msg', $msg);
 			Session::set('alerta_type', $type);
-			/* 
-			Tipos primary, secondary, info, success, warning, danger (no requieren action)
-			Tipo confirm (requiere action).
-			el argumento action es una funcion de js que se ejecuta cuando el usuario confirma 
-			*/
 			Session::set('alerta_action', $action);
 		} 
-    }
+  }
 
 	public function unsetAlert() {
 		unset($_SESSION["alerta_type"]);
