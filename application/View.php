@@ -12,7 +12,6 @@ class View {
 		$this->_js = array();
 		$this->_rutas = array();
 
-		$modulo = $this->_request->getModulo();
 		$controlador = $this->_request->getControlador();
 		$metodo = $this->_request->getMetodo();
 		$this->_controller = $controlador;
@@ -51,10 +50,10 @@ class View {
 
         $viewZone = (is_readable($rutaView)) ? $rutaView  : $this->_rutas['root'] . 'views' . DS. 'error'  . DS . 'index.phtml';
             
-		include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'header.php';
-		include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'navbar.php';
+		//include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'header.php';
+		//include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'navbar.php';
 		include_once $viewZone;
-		include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'footer.php';
+		//include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'footer.php';
 	}
 
   /***************************************************
