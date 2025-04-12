@@ -50,10 +50,10 @@ class View {
 
         $viewZone = (is_readable($rutaView)) ? $rutaView  : $this->_rutas['root'] . 'views' . DS. 'error'  . DS . 'index.phtml';
             
-		//include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'header.php';
+		include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'header.php';
 		//include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'navbar.php';
 		include_once $viewZone;
-		//include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'footer.php';
+		include_once $this->_rutas['root'] . 'views' . DS. 'layout' . DS . 'footer.php';
 	}
 
   /***************************************************
